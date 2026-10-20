@@ -26,8 +26,14 @@ h1 em{display:block;font-size:.58em;font-weight:400;font-style:italic;margin-top
 :root[data-theme="dark"] h1 em{color:#f0a0a5}
 .how{margin:0 0 10px;padding-left:20px;font-size:.95rem;line-height:1.45}.how li{margin-bottom:6px}
 #hello{margin:6px 0 0;font-weight:600}
-.drow{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;align-items:center;margin-top:8px}
-.drow .chk{margin:0}
+.rl{border:1px solid var(--bd);border-radius:12px;padding:10px;margin-top:10px}
+.rl1{display:flex;gap:8px;align-items:center}.rl1 select{flex:1}
+.rx{flex:none}
+.rw{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.wk{min-height:36px;padding:0 12px;border:1px solid var(--bd);border-radius:18px;background:none;color:var(--tx);font:inherit;font-size:.88rem;cursor:pointer}
+.wk.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.rt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.rt label{margin:0}
 .tag.fx{background:#e4e8e6;color:#3d4a45}
 .nota{background:#fcefc0;color:#5a4300;border-radius:10px;padding:12px 14px;margin-top:12px;font-size:.9rem;line-height:1.45}
 .foot{font-size:.78rem;color:var(--mut);text-align:center;margin:22px 0 0}
@@ -114,7 +120,7 @@ textarea{width:100%;min-height:90px;font:.8rem monospace;color:var(--tx);backgro
 <li>Te muestra el bruto, el descuento (18,3 %) y lo que te queda. Todo se arma por período: del 16 de un mes al 15 del siguiente, y se cobra el mes posterior. Al final lo podés comparar con tu recibo de sueldo.</li>
 <li>Después podés descargar todo como Excel para hacer lo que quieras con esos datos.</li>
 </ol>
-<p class="note">🔒 Nuestros datos quedan solo en nuestro celular: nadie más los ve. Conviene hacer la copia de seguridad de vez en cuando. Es una herramienta extraoficial y una estimación: el monto real lo define el recibo de sueldo :)</p>
+<p class="note">🔒 Nuestros datos quedan solo en nuestro celular: nadie más los ve. Conviene guardar una copia en Excel de vez en cuando. Es una herramienta extraoficial y una estimación: el monto real lo define el recibo de sueldo :)</p>
 <button class="add" id="w00go" style="margin-top:6px">Empezar</button>
 </section>
 <section class="box" id="ob0" hidden>
@@ -136,7 +142,7 @@ textarea{width:100%;min-height:90px;font:.8rem monospace;color:var(--tx);backgro
 <button class="sec" id="opt1" style="margin-bottom:8px">Cargar mis días fijos</button>
 <button class="sec" id="opt2" style="margin-bottom:8px">Prefiero cargarlo a mano</button>
 <button class="sec" id="opt3">Soy residente, todavía no tengo días fijos (cargar a mano)</button>
-<p class="note">Los días fijos se cargan solos en todos los períodos. Después podés marcar licencias, reemplazos o guardias cedidas.</p>
+<p class="note">Los días fijos se cargan solos en todos los períodos (podés elegir, por ejemplo, solo el 2.º y 5.º sábado del mes). Después podés marcar licencias, reemplazos o guardias cedidas.</p>
 <div class="nota">💌 <b>Nota:</b> cada período va del 16 de un mes al 15 del mes siguiente, y se cobra el mes posterior al cierre. Por ejemplo, las guardias del 16 de septiembre al 15 de octubre se cobran en noviembre. Cada guardia cuenta en el período del día en que empieza: una que arranca el 15/10 a las 20 hs y termina el 16/10 va en ese mismo período.</div>
 </section>
 <section class="box" id="ob3" hidden><p style="margin:0 0 4px;font-weight:600">Tus días fijos</p></section>
@@ -183,7 +189,6 @@ textarea{width:100%;min-height:90px;font:.8rem monospace;color:var(--tx);backgro
 
 <div class="leg" aria-label="Código de colores"><span class="c-own">Verde: guardia propia</span><span class="c-rep">Azul: reemplazo</span><span class="c-fer">Amarillo: feriado</span><span class="c-ced">Rosa: cedida (no se cobra)</span><span class="plan">Borde punteado: planificada</span></div>
 <section class="box" id="lista"></section>
-<section class="box"><div class="grid"><button class="sec" id="xlcopy">Copiar detalle para Excel</button><button class="sec" id="xldl">Descargar para Excel (.csv)</button></div><textarea id="xl" hidden aria-label="Detalle para copiar" style="margin-top:10px"></textarea><p class="note" id="xlmsg" role="status"></p></section>
 <details class="box"><summary>📆 Calendario del período</summary><div id="cal" style="margin-top:10px"></div><p class="note">Tocá un día para usarlo en el formulario. Las horas de cada día se pintan con el color de su guardia (los mismos de la lista). Borde punteado: planificada.</p></details>
 
 <details class="box" id="setd">
@@ -208,24 +213,20 @@ textarea{width:100%;min-height:90px;font:.8rem monospace;color:var(--tx);backgro
 </details>
 <details class="box" id="profd"><summary>👩🏽‍⚕️ Mi perfil y días fijos</summary>
 <div style="margin-top:10px"><label for="pname">Tu nombre</label><input id="pname" type="text" maxlength="40" autocomplete="given-name"></div>
-<div id="pbody"><div id="pform"><p class="note">Marcá los días en que trabajás todas las semanas, con su horario. Se cargan solos desde el período en que empezás a usar la app y en todos los siguientes. Después podés editar cada guardia: licencia, reemplazo, cedida o feriado. Una guardia fija por día de la semana.</p>
+<div id="pbody"><div id="pform"><p class="note">Agregá tus días fijos: elegí el día, qué semanas del mes (todas, o por ejemplo solo el 2.º y el 5.º) y el horario. Si tenés más de uno, tocá "Agregar día fijo". Se cargan solos desde el período que elijas más abajo y en todos los siguientes. Después podés editar cada guardia: licencia, reemplazo, cedida o feriado (los feriados se marcan a mano).</p>
 <div id="pdays"></div>
-<div id="sincew" style="margin-top:10px"><label for="psince">Cargar días fijos desde</label><input type="date" id="psince"></div>
+<button class="sec" id="padd" type="button" style="margin-top:10px">+ Agregar día fijo</button>
+<div id="sincew" style="margin-top:10px"><label for="psince">Cargar mis días fijos desde el período</label><select id="psince"></select><p class="note" style="margin-top:6px">Elegí desde qué período querés que se carguen. Podés elegir uno anterior si querés cargar también lo que ya pasó.</p></div>
 <button class="add" id="psave" style="margin-top:12px">Guardar días fijos</button>
 <button class="sec" id="pback" style="margin-top:8px" hidden>Elegir otra opción</button>
 <p class="note" id="pmsg" role="status"></p></div></div>
 </details>
 <details class="box"><summary>🔍 Detalle por tipo de hora</summary><div id="detb" style="margin-top:8px"></div></details>
-<details class="box"><summary>🔧 Instalar como app en el celular</summary>
-<p class="note"><b>iPhone (Safari):</b> tocá el botón Compartir y elegí "Agregar a pantalla de inicio".</p>
-<p class="note"><b>Android (Chrome):</b> tocá el menú ⋮ y elegí "Instalar app" o "Agregar a pantalla de inicio".</p>
-<p class="note">Importante: en algunos celulares la app instalada guarda sus datos aparte del navegador. Instalala antes de cargar guardias, o pasá tus datos con la copia de seguridad.</p></details>
 <section class="box ban" id="bkban" hidden><span id="bkt"></span><button class="sec" id="bkgo">Hacer copia ahora</button></section>
-<details class="box" id="bkd"><summary>👮 Copia de seguridad</summary>
-<p class="note">Tocá <b>Guardar copia</b> y elegí dónde guardarla: Archivos, WhatsApp, Mail o Notas. Se guarda un archivo con todo lo que cargaste. Si algún día perdés los datos o cambiás de celular, tocá <b>Restaurar desde archivo</b> y elegí ese archivo.</p>
-<div class="grid" style="margin-top:10px"><button class="add" id="bksave" style="margin-top:0">💾 Guardar copia</button><button class="sec" id="bkfile">📂 Restaurar desde archivo</button></div>
-<input type="file" id="bkin" accept=".json,.txt,application/json,text/plain" hidden>
-<button class="sec" id="bkconf" style="margin-top:10px" hidden></button>
+<details class="box" id="bkd"><summary>👮 Guardar mis guardias en Excel</summary>
+<div class="nota" style="margin-top:10px">📝 <b>Nota:</b> los datos de la app se guardan solo en este celular. Si cambiás de teléfono o lo perdés, se pierden. Por eso te recomiendo guardar de vez en cuando una copia en Excel con todas tus guardias.<br>⚠️ Usá siempre la app desde el ícono de la pantalla de inicio, no desde internet (Safari o Chrome): si la abrís desde el navegador, podés perder los datos.</div>
+<div class="grid" style="margin-top:12px"><button class="add" id="bkdl" style="margin-top:0">Descargar todo (.csv)</button><button class="sec" id="bkcp">Copiar todo para Excel</button></div>
+<textarea id="bkxt" hidden aria-label="Detalle para copiar" style="margin-top:10px"></textarea>
 <p class="note" id="bkmsg" role="status"></p></details>
 </div>
 <p class="foot">Herramienta extraoficial (by valen 🧚🏼‍♀️), no es del hospital. Es una estimación aproximada: el monto real lo define tu recibo. Tus datos quedan solo en este celular.</p>
@@ -272,23 +273,33 @@ const fpc=n=>(Math.round(n*100)/100).toString().replace(".",",");
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const endTs=e=>parse(e.date).getTime()+(toMin(e.start)+Math.round(e.hours*60))*60000;
 const colCls=e=>e.kind=="ced"?"c-ced":e.kind=="rep"?"c-rep":e.hol?"c-fer":"c-own";
-const isPlan=e=>!!e.plan||(!!e.auto&&endTs(e)>Date.now());
+const isPlan=e=>(!!e.plan||!!e.auto)&&endTs(e)>Date.now();
+function settlePlans(){let c=false;const n=Date.now();E.forEach(e=>{if(e.plan&&endTs(e)<=n){e.plan=false;c=true}});if(c)save("g_ent",E)}
 function defSince(){return iso(per(new Date()))}
 function autogen(){
  if(!P||!P.done||!P.rules||!P.rules.length)return;
  const p0=per(new Date()),since=P.since||defSince();
  let end=new Date(p0.getFullYear(),p0.getMonth()+2,15);const pc=parse(cur),ce=new Date(pc.getFullYear(),pc.getMonth()+1,15);if(ce>end)end=ce;
- const have=new Set(E.map(e=>e.date+"|"+e.start)),sk=new Set(P.skip||[]);let n=0;
+ const ov=(x,y)=>{const p=rg(x),q=rg(y);return p[0]<q[1]&&q[0]<p[1]};
+ const man=E.filter(e=>!e.auto);let n=0;
+ const keep=E.filter(e=>!(e.auto&&!e.mod&&man.some(m=>ov(m,e))));if(keep.length!=E.length){E=keep;n++}
+ const have=new Set(E.map(e=>e.date+"|"+e.start)),sk=new Set(P.skip||[]);
  for(let d=parse(since);d<=end;d=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1)){
-  const r=P.rules.find(x=>x.d==d.getDay());if(!r)continue;
-  const k=iso(d)+"|"+r.s;if(have.has(k)||sk.has(k))continue;
-  E.push({id:Date.now()*1000+(n++),date:iso(d),start:r.s,end:r.e,hours:dur(r.s,r.e)/60,hol:false,lic:false,plan:false,kind:"own",who:"",auto:true})}
+  const dn=d.getDate(),dm=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+  for(const r of P.rules){if(r.d!=d.getDay())continue;
+   const w=r.w||[];if(w.length&&!(w.includes(Math.ceil(dn/7))||(w.includes(6)&&dn+7>dm)))continue;
+   const k=iso(d)+"|"+r.s;if(have.has(k)||sk.has(k))continue;
+   const cand={date:iso(d),start:r.s,hours:dur(r.s,r.e)/60};if(E.some(m=>ov(m,cand)))continue;
+   E.push({id:Date.now()*1000+(n++),date:iso(d),start:r.s,end:r.e,hours:dur(r.s,r.e)/60,hol:false,lic:false,plan:false,kind:"own",who:"",auto:true});have.add(k)}}
  if(n)save("g_ent",E)}
 const PD=[[1,"lunes"],[2,"martes"],[3,"miércoles"],[4,"jueves"],[5,"viernes"],[6,"sábado"],[0,"domingo"]];
 function stage(){if(!P||!P.name)return 1;if(!P.mode)return 2;if(P.mode=="fixed"&&!P.done)return 3;return 4}
 let welcomed=false,introDone=false,showIntro=false;
+const WK=[[1,"1.º"],[2,"2.º"],[3,"3.º"],[4,"4.º"],[5,"5.º"],[6,"Último"]];
+function wTxt(r){const w=(r.w||[]).slice().sort((x,y)=>x-y).map(n=>n==6?"último":n+".º");
+ if(!w.length)return"todas las semanas";const t=w.length>1?w.slice(0,-1).join(", ")+" y "+w[w.length-1]:w[0];return t+" del mes"}
 function welcomeTxt(){const m=P.mode,r=P.rules||[];
- if(m=="fixed"&&r.length)return"Tus días fijos: "+r.slice().sort((a,b)=>((a.d+6)%7)-((b.d+6)%7)).map(x=>(PD.find(q=>q[0]==x.d)||[0,""])[1]+" "+x.s+"–"+x.e).join(", ")+".";
+ if(m=="fixed"&&r.length)return"Tus días fijos: "+r.slice().sort((a,b)=>((a.d+6)%7)-((b.d+6)%7)||a.s.localeCompare(b.s)).map(x=>(PD.find(q=>q[0]==x.d)||[0,""])[1]+" "+x.s+"–"+x.e+" ("+wTxt(x)+")").join("; ")+".";
  if(m=="resident")return"Residente: cargás tus guardias a mano.";
  return"Cargás tus guardias a mano."}
 function showStage(){let s=stage();
@@ -298,13 +309,25 @@ function showStage(){let s=stage();
  const it=(s==1&&!introDone)||(s==4&&showIntro);$("#ob00").hidden=!it;$("#w00go").textContent=s==4?"Entendido, volver":"Empezar";
  $("#ob1").hidden=s!=1||it;$("#ob2").hidden=s!=2;$("#ob3").hidden=s!=3;$("#app").hidden=s!=4||w;
  if(s==3)$("#ob3").append($("#pform"));else $("#pbody").append($("#pform"));
- $("#pback").hidden=s!=3;$("#sincew").hidden=s==3;
+ $("#pback").hidden=s!=3;
  $("#hello").textContent=P&&P.name&&!w?"Hola, "+P.name+".":""}
+let RL=[];
+function fillSince(){const cu=defSince(),sel=P&&P.since?perKey(P.since):cu;
+ const ks=periods().filter(k=>k<=cu);if(!ks.includes(sel))ks.push(sel);ks.sort().reverse();
+ $("#psince").innerHTML=ks.map(k=>`<option value="${k}"${k==sel?" selected":""}>${pLabel(k)}</option>`).join("")}
+function syncRL(){document.querySelectorAll("#pdays .rl").forEach((c,i)=>{if(!RL[i])return;RL[i].d=+c.querySelector(".rd").value;RL[i].s=c.querySelector(".rs").value;RL[i].e=c.querySelector(".re").value})}
+function renderRules(){
+ $("#pdays").innerHTML=RL.length?RL.map((r,i)=>{const all=!(r.w&&r.w.length);return`<div class="rl" data-i="${i}"><div class="rl1"><select class="rd" aria-label="Día de la semana">${PD.map(([n,nm])=>`<option value="${n}"${n==r.d?" selected":""}>${nm}</option>`).join("")}</select><button type="button" class="x rx" aria-label="Quitar este día fijo">✕</button></div><div class="rw" role="group" aria-label="Qué semanas del mes"><button type="button" class="wk${all?" on":""}" data-w="0" aria-pressed="${all}">Todas</button>${WK.map(([n,l])=>{const on=(r.w||[]).includes(n);return`<button type="button" class="wk${on?" on":""}" data-w="${n}" aria-pressed="${on}">${l}</button>`}).join("")}</div><div class="rt"><label>Inicio<input type="time" class="rs" value="${r.s}"></label><label>Fin<input type="time" class="re" value="${r.e}"></label></div></div>`}).join(""):`<p class="note">Todavía no agregaste días fijos.</p>`}
+$("#pdays").onclick=e=>{const c=e.target.closest(".rl");if(!c)return;syncRL();const i=+c.dataset.i,r=RL[i];
+ if(e.target.closest(".rx")){RL.splice(i,1);renderRules();return}
+ const b=e.target.closest(".wk");if(b){const n=+b.dataset.w;let w=r.w||[];if(n==0)w=[];else w=w.includes(n)?w.filter(x=>x!=n):w.concat(n).sort((x,y)=>x-y);r.w=w;renderRules()}};
+$("#padd").onclick=()=>{syncRL();RL.push({d:1,s:"08:00",e:"20:00",w:[]});renderRules()};
 function buildProf(){
- $("#pdays").innerHTML=PD.map(([n,nm])=>`<div class="drow"><label class="chk"><input type="checkbox" id="pd${n}">${nm}</label><input type="time" id="ps${n}" value="08:00" aria-label="Inicio ${nm}"><input type="time" id="pe${n}" value="20:00" aria-label="Fin ${nm}"></div>`).join("");
+ RL=((P&&P.rules)||[]).map(r=>({d:r.d,s:r.s,e:r.e,w:(r.w||[]).slice()}));
+ if(!RL.length&&P&&P.mode=="fixed"&&!P.done)RL.push({d:1,s:"08:00",e:"20:00",w:[]});
+ renderRules();
  const p=P||{};$("#pname").value=p.name||"";$("#obname").value=p.name||"";
- (p.rules||[]).forEach(r=>{const a=$("#pd"+r.d);if(!a)return;a.checked=true;$("#ps"+r.d).value=r.s;$("#pe"+r.d).value=r.e});
- $("#psince").value=p.since||defSince();
+ fillSince();
  showStage()}
 function setP(o){P={name:"",rules:[],skip:[],since:"",...(P||{}),...o};save("g_prof",P);buildProf();render()}
 $("#w0how").onclick=()=>{showIntro=true;showStage();window.scrollTo(0,0)};
@@ -323,9 +346,9 @@ $("#opt3").onclick=()=>setP({mode:"resident",done:true});
 $("#pback").onclick=()=>{const q={...P};delete q.mode;q.done=false;P=q;save("g_prof",P);buildProf();render()};
 $("#psave").onclick=()=>{
  const onb=stage()==3,name=$("#pname").value.trim()||P.name,since=$("#psince").value;
- const rules=PD.filter(([n])=>$("#pd"+n).checked).map(([n])=>({d:n,s:$("#ps"+n).value,e:$("#pe"+n).value}));
- if(rules.some(r=>!r.s||!r.e)){$("#pmsg").textContent="Completá la hora de inicio y de fin de cada día elegido.";return}
- if(onb&&!rules.length){$("#pmsg").textContent="Marcá al menos un día o elegí otra opción.";return}
+ syncRL();const rules=RL.map(r=>({d:r.d,s:r.s,e:r.e,...(r.w&&r.w.length?{w:r.w.slice()}:{})}));
+ if(rules.some(r=>!r.s||!r.e)){$("#pmsg").textContent="Completá la hora de inicio y de fin de cada día fijo.";return}
+ if(onb&&!rules.length){$("#pmsg").textContent="Agregá al menos un día fijo o elegí otra opción.";return}
  if(rules.length&&!since){$("#pmsg").textContent="Elegí desde qué fecha cargar tus días fijos.";return}
  const now=Date.now();
  E=E.filter(e=>!(e.auto&&!e.mod&&endTs(e)>now));
@@ -333,7 +356,7 @@ $("#psave").onclick=()=>{
  save("g_prof",P);autogen();save("g_ent",E);buildProf();render();
  $("#pmsg").textContent=rules.length?"Listo: cargué tus días fijos en todos los períodos.":"Perfil guardado."};
 function render(){
- autogen();
+ settlePlans();autogen();
  $("#per").innerHTML=periods().map(k=>`<option value="${k}"${k==cur?" selected":""}>${pLabel(k)}</option>`).join("");
  const list=E.filter(e=>perKey(e.date)==cur).sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start));
  let H=0,G=0,D=0,PC=0,PN=0;const pcs=new Set(),B={};
@@ -371,8 +394,8 @@ function showDur(){const i=$("#i").value,o=$("#o").value;$("#dur").textContent=i
 $("#i").oninput=showDur;$("#o").oninput=showDur;
 function kindUi(){const k=$("#kind").value;$("#whow").hidden=k=="own";$("#wholbl").textContent=k=="rep"?"¿A quién cubrís? (opcional)":"¿A quién se la diste? (opcional)"}
 $("#kind").onchange=kindUi;
-function bkBan(){const t=load("g_bk",0),days=t?(Date.now()-t)/864e5:0;const show=E.length>0&&(!t||days>=14);$("#bkban").hidden=!show;if(show)$("#bkt").textContent=t?"Hace "+Math.floor(days)+" días que no hacés una copia de seguridad.":"Todavía no hiciste una copia de seguridad. Tus guardias están solo en este dispositivo."}
-$("#bkgo").onclick=()=>{$("#bkd").open=true;$("#bkd").scrollIntoView({behavior:"smooth",block:"start"});$("#bksave").focus()};
+function bkBan(){const t=load("g_bk",0),days=t?(Date.now()-t)/864e5:0;const show=E.length>0&&(!t||days>=14);$("#bkban").hidden=!show;if(show)$("#bkt").textContent=t?"Hace "+Math.floor(days)+" días que no hacés una copia para Excel.":"Hacé una copia para Excel: todavía no guardaste ninguna y tus guardias están solo en este celular."}
+$("#bkgo").onclick=()=>{$("#bkd").open=true;$("#bkd").scrollIntoView({behavior:"smooth",block:"start"});$("#bkdl").focus()};
 function valBan(){$("#valban").hidden=!(P&&P.name&&P.mode&&(P.mode!="fixed"||P.done)&&!P.vals)}
 $("#valgo").onclick=()=>{$("#setd").open=true;$("#setd").scrollIntoView({behavior:"smooth",block:"start"})};
 $("#valok").onclick=$("#valx").onclick=()=>{P.vals=true;save("g_prof",P);valBan()};
@@ -381,6 +404,8 @@ $("#add").onclick=()=>{const date=$("#f").value,start=$("#i").value,end=$("#o").
  if(!date||!start||!end){$("#msg").textContent="Completá fecha, hora de inicio y hora de fin.";return}
  $("#msg").textContent="";
  const nu={date,start,end,hours:dur(start,end)/60,hol:$("#fer").checked,lic:$("#lic").checked,plan:$("#plan").checked,kind:$("#kind").value,who:$("#kind").value=="own"?"":$("#who").value.trim()};
+ const dup=E.find(x=>x.id!=editId&&x.date==date&&x.start==start&&x.end==end);
+ if(dup){const dd=parse(dup.date);cur=perKey(dup.date);render();hl(dup.id,true);$("#msg").textContent="⚠️ Error: esa guardia ya está cargada ("+dd.getDate()+"/"+(dd.getMonth()+1)+", "+dup.start+"–"+dup.end+"). La resalté en la lista. No se puede cargar dos veces; si querés cambiarla, tocá ✎ en la guardia.";ovKey="";return}
  const ov=overl({...nu,id:editId!=null?editId:-1});
  if(ov&&ovKey!==JSON.stringify(nu)){const od=parse(ov.date);cur=perKey(ov.date);render();hl(ov.id,true);$("#msg").textContent="Ya tenés cargada una guardia que se superpone: la del "+od.getDate()+"/"+(od.getMonth()+1)+" ("+ov.start+"–"+ov.end+"), resaltada en la lista. Si querés cargarla igual, tocá de nuevo.";ovKey=JSON.stringify(nu);return}
  ovKey="";
@@ -395,24 +420,6 @@ $("#f").onchange=()=>{const v=$("#f").value;if(v){cur=perKey(v);render()}};
 document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{const [s,o]=b.dataset.s.split(",");$("#i").value=s;$("#o").value=o;showDur()});
 function difUpd(){const cv=C[cur];const d=cv!=null?cv-NET:0;$("#dif").textContent=cv==null?"":(Math.abs(d)<1?"Coincide con lo calculado.":"Cobraste "+money(Math.abs(d))+(d>0?" más":" menos")+" de lo calculado.")}
 $("#cob").onchange=e=>{const v=parseFloat(e.target.value);if(e.target.value==="")delete C[cur];else if(v>=0)C[cur]=v;save("g_cob",C);difUpd()};
-const bkOk=d=>d&&Array.isArray(d.E)&&d.S&&Array.isArray(d.S.sets);
-const bkData=()=>JSON.stringify({v:1,t:Date.now(),E,S,C,P});
-function bkApply(d){E=d.E;S=d.S;C=d.C||{};if(d.P){P=d.P;save("g_prof",P)}save("g_ent",E);save("g_set",S);save("g_cob",C);sel=S.sets.length-1;$("#ns").value=S.ns;$("#ne").value=S.ne;buildProf();autogen();renderSet();render();$("#bkmsg").textContent="Datos restaurados."}
-$("#bksave").onclick=async()=>{const t=bkData(),d=new Date(),nm="guardiamos-copia-"+iso(d)+".json";let done=false;
- try{const f=new File([t],nm,{type:"application/json"});
-  if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:"Copia de seguridad - GUARDIAMOS"});done=true}}
- catch(e){if(e&&e.name=="AbortError"){$("#bkmsg").textContent="No se guardó la copia.";return}}
- if(!done){try{const u=URL.createObjectURL(new Blob([t],{type:"application/json"})),a=document.createElement("a");a.href=u;a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);done=true}catch(e){}}
- if(!done){try{await navigator.clipboard.writeText(t);done=true;$("#bkmsg").textContent="Este celular no permite guardar archivos desde acá: copié el texto de la copia. Pegalo en Notas.";save("g_bk",Date.now());bkBan();return}catch(e){}}
- if(done){save("g_bk",Date.now());bkBan();$("#bkmsg").textContent="Copia lista. Guardala en un lugar seguro (por ejemplo en Archivos o en un mail a vos misma)."}
- else $("#bkmsg").textContent="No se pudo guardar. Probá de nuevo o desde otro navegador."};
-let bkPend=null;
-$("#bkfile").onclick=()=>{$("#bkin").value="";$("#bkin").click()};
-$("#bkin").onchange=async e=>{const f=e.target.files&&e.target.files[0];if(!f)return;let d;try{d=JSON.parse(await f.text())}catch(x){}
- if(!bkOk(d)){bkPend=null;$("#bkconf").hidden=true;$("#bkmsg").textContent="Ese archivo no es una copia válida de esta app.";return}
- bkPend=d;const n=d.E.length,dt=d.t?" del "+new Date(d.t).toLocaleDateString("es-AR"):"";
- $("#bkmsg").textContent="Copia"+dt+" con "+n+" guardias. Al confirmar, reemplaza lo que hay cargado ahora.";$("#bkconf").textContent="Confirmar: restaurar esta copia";$("#bkconf").hidden=false};
-$("#bkconf").onclick=()=>{if(!bkPend)return;bkApply(bkPend);bkPend=null;$("#bkconf").hidden=true};
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
 const rg=e=>{const a=Math.round(parse(e.date).getTime()/60000)+toMin(e.start);return[a,a+Math.round(e.hours*60)]};
 function overl(e){if(e.kind=="ced")return;const[a,b]=rg(e);return E.find(x=>x.id!=e.id&&x.kind!="ced"&&(r=>r[0]<b&&a<r[1])(rg(x)))}
@@ -426,8 +433,8 @@ function renderExtra(list,B,PC,PN){
   h+=`<button class="cd" data-d="${k}" aria-label="${d.getDate()} de ${MES[d.getMonth()]}"><span>${d.getDate()}</span>${es.map(x=>`<i class="${colCls(x)}${isPlan(x)?" pl":""}">${x.start.slice(0,2)}–${x.end.slice(0,2)}</i>`).join("")}</button>`}
  $("#cal").innerHTML=h}
 $("#cal").onclick=e=>{const b=e.target.closest(".cd");if(!b)return;$("#f").value=b.dataset.d;$("#f").scrollIntoView({behavior:"smooth",block:"center"})};
-function xlRows(){
- const li=E.filter(e=>perKey(e.date)==cur).sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start));
+function xlBlock(k){
+ const li=E.filter(e=>perKey(e.date)==k).sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start));
  const m=v=>v.toFixed(2).replace(".",","),DS=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
  let G=0,D=0,H=0,HD=0,HN=0;
  const body=li.map(e=>{const c=calc(e),ce=e.kind=="ced",d=parse(e.date);
@@ -436,20 +443,28 @@ function xlRows(){
   if(!ce){G+=c.g;D+=c.dto;H+=e.hours;HD+=c.d;HN+=c.n}
   return[d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear(),DS[d.getDay()],e.start,e.end,fh(e.hours),fh(c.d),fh(c.n),TN[c.t],e.hol?"Sí":"No",tipo,(e.who||"").replace(/\s+/g," "),m(c.r[c.t+"_d"]),m(c.r[c.t+"_n"]),m(g),m(dt),m(g-dt)]});
  const e0=Array(16).fill("");const row=(i,v)=>{const r=e0.slice();for(const k in i)r[k]=i[k];return r};
- return[["Guardias – "+pLabel(cur)],[],
+ return[["Guardias – "+pLabel(k)],[],
   ["Fecha","Día","Inicio","Fin","Horas","Hs día","Hs noche","Tipo de día","Feriado","Tipo de guardia","Con quién","Valor hora día","Valor hora noche","Bruto","Descuento","Neto"],
   ...body,[],
   row({3:"TOTALES",4:fh(H),5:fh(HD),6:fh(HN),13:m(G),14:m(D),15:m(G-D)})]}
 const xlTxt=r=>r.map(x=>x.join("\t")).join("\n");
 const xlCsv=r=>"﻿"+r.map(x=>x.map(v=>/[;"\n]/.test(v)?'"'+String(v).replace(/"/g,'""')+'"':v).join(";")).join("\r\n");
-$("#xlcopy").onclick=async()=>{const t=xlTxt(xlRows());
- let ok=false;try{await navigator.clipboard.writeText(t);ok=true}catch(e){}
- const ta=$("#xl");ta.value=t;ta.hidden=ok;if(!ok)ta.select();
- $("#xlmsg").textContent=ok?"Detalle copiado. Pegalo en Excel.":"No se pudo copiar solo. Seleccioná el texto de arriba, copialo y pegalo en Excel."};
-$("#xldl").onclick=()=>{const k=cur,s=parse(k),en=new Date(s.getFullYear(),s.getMonth()+1,15);
- const nm="guardias_"+iso(s)+"_a_"+iso(en)+".csv";
- try{const u=URL.createObjectURL(new Blob([xlCsv(xlRows())],{type:"text/csv;charset=utf-8"})),a=document.createElement("a");a.href=u;a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
-  $("#xlmsg").textContent="Archivo "+nm+" descargado. Abrilo con Excel."}catch(e){$("#xlmsg").textContent="No se pudo descargar. Usá Copiar detalle para Excel."}};
+function xlRows(keys){const out=[];keys.forEach((k,i)=>{if(i)out.push([],[]);out.push(...xlBlock(k))});return out}
+const allKeys=()=>[...new Set(E.map(e=>perKey(e.date)))].sort();
+async function saveFile(nm,text,mime,title){
+ try{const f=new File([text],nm,{type:mime});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title});return"share"}}
+ catch(e){if(e&&e.name=="AbortError")return"cancel"}
+ try{const u=URL.createObjectURL(new Blob([text],{type:mime})),a=document.createElement("a");a.href=u;a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return"dl"}catch(e){}
+ return""}
+const fileMsg=(r,nm)=>r=="share"?"Listo: elegí dónde guardarlo (Archivos, Mail, WhatsApp…). Después abrilo con Excel.":r=="dl"?"Archivo "+nm+" descargado. Abrilo con Excel.":r=="cancel"?"No se guardó el archivo.":"No se pudo guardar el archivo. Probá con Copiar para Excel.";
+async function copyShow(t,ta,msg,okTxt){let ok=false;try{await navigator.clipboard.writeText(t);ok=true}catch(e){}
+ ta.value=t;ta.hidden=ok;if(!ok)ta.select();msg.textContent=ok?okTxt:"No se pudo copiar solo. Seleccioná el texto de arriba, copialo y pegalo en Excel.";return ok}
+$("#bkdl").onclick=async()=>{const ks=allKeys();if(!ks.length){$("#bkmsg").textContent="Todavía no cargaste guardias.";return}
+ const nm="GUARDIAMOS-todas-mis-guardias-"+iso(new Date())+".csv";
+ const r=await saveFile(nm,xlCsv(xlRows(ks)),"text/csv;charset=utf-8","GUARDIAMOS - todas mis guardias");
+ if(r&&r!="cancel"){save("g_bk",Date.now());bkBan()}$("#bkmsg").textContent=fileMsg(r,nm)};
+$("#bkcp").onclick=async()=>{const ks=allKeys();if(!ks.length){$("#bkmsg").textContent="Todavía no cargaste guardias.";return}
+ const ok=await copyShow(xlTxt(xlRows(ks)),$("#bkxt"),$("#bkmsg"),"Copiado. Pegalo en una planilla de Excel o en Notas para guardarlo.");if(ok){save("g_bk",Date.now());bkBan()}};
 buildProf();autogen();showDur();renderSet();render();
 try{if("serviceWorker" in navigator&&location.protocol.startsWith("http"))addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})})}catch(e){}
 </script></body></html>
