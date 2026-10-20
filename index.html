@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GUARDIAMOS</title>
+<meta name="apple-mobile-web-app-title" content="GUARDIAMOS">
+<meta name="application-name" content="GUARDIAMOS">
+<meta name="theme-color" content="#085196">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3f1;--card:#fff;--tx:#14231f;--mut:#5d6f69;--ac:#1d4e89;--blue:#1b5fc4;--bd:#d5e0dc;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1715;--card:#18221f;--tx:#e8f0ed;--mut:#98aaa3;--ac:#8db8f0;--blue:#8db8f0;--bd:#2a3833;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1715;--card:#18221f;--tx:#e8f0ed;--mut:#98aaa3;--ac:#8db8f0;--blue:#8db8f0;--bd:#2a3833;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px 16px 40px}
+.hero{margin:0 0 16px}
+.hero img{width:100%;height:auto;aspect-ratio:1200/648;object-fit:cover;border-radius:14px;display:block}
+h1{font-size:1.6rem;line-height:1.2;margin:14px 0 4px;font-weight:800;color:var(--ac)}
+h1 .sub{display:block;font-size:.62em;font-weight:700;margin-top:2px}
+h1 em{display:block;font-size:.58em;font-weight:400;font-style:italic;margin-top:4px;color:#a8323a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h1 em{color:#f0a0a5}}
+:root[data-theme="dark"] h1 em{color:#f0a0a5}
+.how{margin:0 0 10px;padding-left:20px;font-size:.95rem;line-height:1.45}.how li{margin-bottom:6px}
+#hello{margin:6px 0 0;font-weight:600}
+.rl{border:1px solid var(--bd);border-radius:12px;padding:10px;margin-top:10px}
+.rl1{display:flex;gap:8px;align-items:center}.rl1 select{flex:1}
+.rx{flex:none}
+.rw{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.wk{min-height:36px;padding:0 12px;border:1px solid var(--bd);border-radius:18px;background:none;color:var(--tx);font:inherit;font-size:.88rem;cursor:pointer}
+.wk.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.rt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.rt label{margin:0}
+.tag.fx{background:#e4e8e6;color:#3d4a45}
+.nota{background:#fcefc0;color:#5a4300;border-radius:10px;padding:12px 14px;margin-top:12px;font-size:.9rem;line-height:1.45}
+.foot{font-size:.78rem;color:var(--mut);text-align:center;margin:22px 0 0}
+label{display:block;font-size:.82rem;color:var(--mut);margin-bottom:4px}
+select,input{width:100%;font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:10px;min-height:44px}
+select:focus-visible,input:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.sum{margin:14px 0}
+.sum small{display:block;font-size:.85rem;opacity:.8}
+.sum b{display:block;font-weight:800;overflow-wrap:anywhere}
+.neto{background:#c8ecd6;color:#10392a;border-radius:14px;padding:18px}
+.neto b{font-size:2.3rem;line-height:1.15;margin:2px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.two>div{border-radius:12px;padding:12px 14px}
+.two b{font-size:1.2rem}
+.bruto{background:#cfe0f7;color:#17345c}
+.dto{background:#f7d0d2;color:#5c1d20}
+.why{display:block;margin-top:8px;padding:6px 10px;min-height:36px;border:1px solid rgba(92,29,32,.4);border-radius:8px;background:rgba(255,255,255,.55);color:#5c1d20;font:inherit;font-size:.8rem;cursor:pointer}
+.whyp{background:#f7d0d2;color:#5c1d20;border-radius:12px;padding:12px 14px;margin-top:10px;font-size:.9rem;line-height:1.4}
+.whyp table{border-collapse:collapse;width:100%}.whyp td{padding:3px 0;border-top:1px solid rgba(92,29,32,.2)}.whyp td:first-child{width:3.2em;font-weight:700}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;align-items:center;gap:8px;color:var(--tx);font-size:.95rem}
+.chk input{width:20px;min-height:20px;height:20px}
+button.add,button.sec{width:100%;min-height:46px;border-radius:8px;font:inherit;font-weight:600;cursor:pointer}
+button.add{border:0;background:var(--ac);color:var(--bg);margin-top:6px}
+button.sec{border:1px solid var(--bd);background:none;color:var(--tx)}
+.row{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-top:1px solid var(--bd)}
+.row:first-child{border-top:0}
+.row .m{color:var(--mut);font-size:.85rem}
+.row .x{grid-row:1/3;grid-column:2;align-self:center;background:none;border:1px solid var(--bd);border-radius:8px;color:var(--mut);min-height:40px;min-width:40px;cursor:pointer;font:inherit}
+.empty{color:var(--mut);margin:4px 0}
+summary{cursor:pointer;font-weight:600;min-height:32px}
+.note{font-size:.82rem;color:var(--mut);margin:10px 0 0}
+#msg{color:#b3261e;font-size:.9rem;min-height:1.2em;margin:6px 0 0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.chip{min-height:40px;padding:0 14px;border:1px solid var(--bd);border-radius:20px;background:none;color:var(--tx);font:inherit;cursor:pointer}
+.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:10px;background:#cfe0f7;color:#17345c;margin-left:8px}
+.acts{display:flex;gap:6px;grid-row:1/3;grid-column:2;align-self:center}
+textarea{width:100%;min-height:90px;font:.8rem monospace;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:8px}
+.tag.pl{background:#fbe8b8;color:#5a4300}
+.tag.ov{background:#f7d0d2;color:#5c1d20}
+#cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.ch{text-align:center;font-size:.72rem;color:var(--mut)}
+.cd{min-height:52px;border:1px solid var(--bd);border-radius:8px;background:none;color:var(--tx);font:inherit;font-size:.8rem;display:flex;flex-direction:column;align-items:center;padding:3px 0;cursor:pointer}
+.cd i{font-style:normal;font-size:.66rem;border-radius:6px;padding:0 4px;margin-top:2px;color:#10392a;background:#c8ecd6}
+.cd i.li{background:#cfe0f7;color:#17345c}
+.cd i{font-size:.74rem;padding:1px 4px;margin-top:3px;width:calc(100% - 8px);text-align:center;box-sizing:border-box}
+.cd i.c-own{background:#c8ecd6;color:#10392a}
+.cd i.c-rep{background:#cfe0f7;color:#17345c}
+.cd i.c-fer{background:#fcefc0;color:#5a4300}
+.cd i.c-ced{background:#f9d3dc;color:#5c1d2e}
+.cd i.pl{border:1px dashed rgba(0,0,0,.55)}
+.cd i.re{background:#e3d9f5;color:#33224f}
+.cd i.ce{background:none;color:var(--mut);border:1px dashed var(--mut);text-decoration:line-through}
+.tag.re{background:#e3d9f5;color:#33224f}
+.tag.ce{background:#e4e8e6;color:#3d4a45}
+.c-own{background:#c8ecd6;color:#10392a}
+.c-rep{background:#cfe0f7;color:#17345c}
+.c-fer{background:#fcefc0;color:#5a4300}
+.c-ced{background:#f9d3dc;color:#5c1d2e}
+.row.k{border-top:0;border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.row.k:last-child{margin-bottom:0}
+.row.k .m{color:inherit;opacity:.8}
+.row.k .x{color:inherit;border-color:rgba(0,0,0,.28)}
+.row.plan{box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.35);border-style:dashed}
+.row.hl{outline:3px solid var(--ac);outline-offset:2px}
+.leg{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.leg span{font-size:.78rem;padding:3px 10px;border-radius:10px}
+.leg .plan{border:1px dashed var(--mut);color:var(--mut)}
+#hs{font-weight:600;opacity:1;font-size:.95rem}
+.ban{background:#fbe8b8;color:#5a4300;border-color:#e6c870}
+.ban button.sec{color:#5a4300;border-color:#b38a00;margin-top:8px}
+</style></head><body><main>
+<header class="hero"><img src="hospital.jpg" width="1200" height="648" alt="Entrada de la guardia pediátrica del Hospital Británico, en blanco y negro, con el ícono de la app"><h1>Guardiamos 🌙 🇬🇧<span class="sub">Calculadora de guardias pediátricas</span><em>(Herramienta independiente y no oficial, by Valen 🧚🏼‍♀️)</em></h1><p id="hello"></p></header>
+<section class="box" id="ob000" hidden>
+<p style="margin:0 0 8px;font-weight:700;font-size:1.2rem">¡Bienvenida/o! 👋</p>
+<p class="note" style="margin:0 0 12px">Esta es una calculadora para que los pediatras del HB estimemos cuánto vamos a cobrar por nuestras guardias.</p>
+<button class="add" id="w000go">Continuar</button>
+</section>
+<section class="box" id="ob00" hidden>
+<p style="margin:0 0 6px;font-weight:700;font-size:1.1rem">¿Cómo funciona?</p>
+<ol class="how">
+<li>La app calcula cuánto vas a cobrar a partir de tus guardias: cargás la fecha y la hora de inicio y de fin, y las horas se calculan solas.</li>
+<li>Si tenés guardias fijas, cargalas una sola vez y se completan solas: después solo modificás lo que cambie (licencias, reemplazos o guardias cedidas).</li>
+<li>Si no tenés guardias fijas o hacés reemplazos (probablemente seas resi), las vas cargando vos a medida que las hacés.</li>
+<li>La app separa las horas de día y de noche (de 20 a 8) y usa el valor de semana, fin de semana o feriado según el día en que empieza cada guardia.</li>
+<li>Te muestra el bruto, el descuento (18,3 %) y lo que te queda. Todo se arma por período: del 16 de un mes al 15 del siguiente, y se cobra el mes posterior. Al final lo podés comparar con tu recibo de sueldo.</li>
+<li>Después podés descargar todo como Excel para hacer lo que quieras con esos datos.</li>
+</ol>
+<p class="note">🔒 Nuestros datos quedan solo en nuestro celular: nadie más los ve. Conviene guardar una copia en Excel de vez en cuando. Es una herramienta extraoficial y una estimación: el monto real lo define el recibo de sueldo :)</p>
+<button class="add" id="w00go" style="margin-top:6px">Empezar</button>
+</section>
+<section class="box" id="ob0" hidden>
+<p style="margin:0 0 6px;font-weight:700;font-size:1.1rem" id="w0t"></p>
+<p class="note" id="w0s" style="margin:0 0 12px"></p>
+<button class="add" id="w0go">Continuar</button>
+<button class="sec" id="w0ch" style="margin-top:8px">Cambiar mis opciones</button>
+<button class="sec" id="w0how" style="margin-top:8px">¿Cómo funciona la app?</button>
+</section>
+<section class="box" id="ob1" hidden>
+<p style="margin:0 0 10px;font-weight:600">Para empezar, poné tu nombre</p>
+<label for="obname">Tu nombre</label><input id="obname" type="text" maxlength="40" autocomplete="given-name">
+<button class="add" id="obnext" style="margin-top:12px">Continuar</button>
+<button class="sec" id="obback" style="margin-top:8px">← Volver</button>
+<p class="note" id="obmsg" role="alert"></p>
+</section>
+<section class="box" id="ob2" hidden>
+<p style="margin:0 0 10px;font-weight:600">¿Cómo querés cargar tus guardias?</p>
+<button class="sec" id="opt1" style="margin-bottom:8px">Cargar mis días fijos</button>
+<button class="sec" id="opt2" style="margin-bottom:8px">Prefiero cargarlo a mano</button>
+<button class="sec" id="opt3">Soy residente, todavía no tengo días fijos (cargar a mano)</button>
+<p class="note">Los días fijos se cargan solos en todos los períodos (podés elegir, por ejemplo, solo el 2.º y 5.º sábado del mes). Después podés marcar licencias, reemplazos o guardias cedidas.</p>
+<div class="nota">💌 <b>Nota:</b> cada período va del 16 de un mes al 15 del mes siguiente, y se cobra el mes posterior al cierre. Por ejemplo, las guardias del 16 de septiembre al 15 de octubre se cobran en noviembre. Cada guardia cuenta en el período del día en que empieza: una que arranca el 15/10 a las 20 hs y termina el 16/10 va en ese mismo período.</div>
+</section>
+<section class="box" id="ob3" hidden><p style="margin:0 0 4px;font-weight:600">Tus días fijos</p></section>
+<div id="app" hidden>
+<button class="sec" id="home" style="margin-bottom:12px">← Volver al inicio</button>
+<section class="box ban" id="valban" hidden style="position:relative"><button type="button" class="x" id="valx" aria-label="Cerrar notificación" title="Cerrar notificación" style="position:absolute;top:6px;right:6px">✕</button><span style="display:block;padding-right:34px">Los valores por hora que usa la calculadora son los de guardia de Pediatría según la <b>actualización de octubre 2026</b>, con un descuento de 18,3 %, y están <b>sujetos a cambios más adelante</b>.</span>
+<span style="display:block;margin-top:8px"><b>Cuando cambien:</b> tocá "Ver valores", creá una tabla nueva con la fecha desde la que rige y editá los montos. Los períodos anteriores no cambian.</span><button class="sec" id="valgo">Ver valores</button><button class="sec" id="valok">Entendido, cuando se actualice lo cambio (cerrar notificación)</button></section>
+<label for="per">Período de liquidación</label>
+<select id="per"></select>
+
+<section class="sum" aria-live="polite">
+<div class="neto"><small>A cobrar (neto)</small><b id="neto">$ 0</b><small id="hs">0 hs</small><small id="pln"></small></div>
+<div class="two">
+<div class="bruto"><small>Bruto</small><b id="bruto">$ 0</b></div>
+<div class="dto"><small id="dtol">Descuento</small><b id="dto">$ 0</b><button type="button" class="why" id="why" aria-expanded="false" aria-controls="whyp">ⓘ ¿Qué se descuenta?</button></div>
+</div>
+<div class="whyp" id="whyp" hidden>
+<p style="margin:0 0 8px"><b>¿Por qué se descuenta el 18,3 %?</b> Son los aportes y retenciones habituales de un sueldo en relación de dependencia, que se restan del bruto:</p>
+<table><tr><td>11 %</td><td>Jubilación (aporte previsional)</td></tr><tr><td>3 %</td><td>Ley 19.032 (PAMI)</td></tr><tr><td>3 %</td><td>Obra social</td></tr><tr><td>1 %</td><td>Seguro de vida obligatorio</td></tr><tr><td>0,3 %</td><td>Fondo solidario de sepelio</td></tr></table>
+<p style="margin:8px 0 0;font-size:.85rem">Es un desglose orientativo: el detalle exacto figura en tu recibo de sueldo.</p>
+</div>
+</section>
+
+<section class="box">
+<div class="grid" style="align-items:end"><div><label for="cob">Lo que cobré en este período</label><input type="number" id="cob" step="0.01" inputmode="decimal" placeholder="Cargalo cuando llegue el recibo"></div><p class="note" id="dif" style="margin:0 0 12px" role="status"></p></div>
+</section>
+
+<div class="leg" aria-label="Código de colores"><span class="c-own">Verde: guardia propia</span><span class="c-rep">Azul: reemplazo</span><span class="c-fer">Amarillo: feriado</span><span class="c-ced">Rosa: cedida (no se cobra)</span><span class="plan">Borde punteado: planificada</span></div>
+<details class="box" id="gd"><summary id="gdt">📋 Guardias cargadas del período</summary>
+<div style="margin-top:10px">
+<div class="chips"><button class="chip" data-s="08:00,20:00">☀️ 12 hs día</button><button class="chip" data-s="20:00,08:00">🌙 12 hs noche</button><button class="chip" data-s="08:00,08:00">⏰ 24 hs</button></div>
+<div class="grid">
+<div><label for="f">Fecha</label><input type="date" id="f"></div>
+<div style="display:flex;align-items:end"><label class="chk" style="margin:0 0 12px"><input type="checkbox" id="fer">🎉 Es feriado</label></div>
+<div><label for="i">Hora de inicio</label><input type="time" id="i" value="08:00"></div>
+<div><label for="o">Hora de fin</label><input type="time" id="o" value="20:00"></div>
+</div>
+<div class="grid" style="margin-top:10px"><div><label for="kind">Tipo de guardia</label><select id="kind"><option value="own">Mi guardia</option><option value="rep">Reemplazo (cubro a alguien)</option><option value="ced">Cedida (se la di a alguien, no la cobro)</option></select></div><div id="whow" hidden><label for="who" id="wholbl">Nombre (opcional)</label><input type="text" id="who" maxlength="40"></div></div>
+<label class="chk" style="margin-top:10px"><input type="checkbox" id="lic">Es licencia (se paga como trabajada)</label>
+<label class="chk" style="margin-top:6px"><input type="checkbox" id="plan">Planificada (todavía no la hice)</label>
+<p class="note" id="dur"></p>
+<button class="add" id="add">Agregar guardia</button>
+<button class="sec" id="cancel" style="margin-top:8px;display:none">Cancelar edición</button>
+<p id="msg" role="alert"></p>
+</div>
+<div id="lista" style="margin-top:14px"></div>
+</details>
+<details class="box"><summary>📆 Calendario del período</summary><div id="cal" style="margin-top:10px"></div><p class="note">Tocá un día para usarlo en el formulario. Las horas de cada día se pintan con el color de su guardia (los mismos de la lista). Borde punteado: planificada.</p></details>
+
+<details class="box" id="setd">
+<summary>💴 Valores por hora y ajustes</summary>
+<div class="nota">💌 <b>Nota:</b> estos son los valores de hora de guardia de Pediatría según la <b>actualización de octubre 2026</b>, sujetos a cambios más adelante. <b>Para corregir un monto:</b> editalo en la tabla de abajo; el cambio vale para todos los períodos que usan esa tabla. <b>Cuando haya una actualización:</b> en "Nueva tabla vigente desde" poné la fecha en que empieza a regir, tocá "Crear tabla nueva" y editá los montos de esa tabla. Los períodos anteriores se mantienen con los valores que tenían.</div>
+<div style="margin-top:10px"><label for="setsel">Tabla de valores</label><select id="setsel"></select></div>
+<div class="grid" id="rates" style="margin-top:10px"></div>
+<div class="grid" style="margin-top:10px">
+<div><label for="desc">Descuento (%)</label><input type="number" id="desc" step="0.1" inputmode="decimal"></div>
+<div></div>
+</div>
+<div class="grid" style="margin-top:14px;align-items:end">
+<div><label for="nsd">Nueva tabla vigente desde</label><input type="date" id="nsd"></div>
+<button class="sec" id="newset">Crear tabla nueva</button>
+</div>
+<button class="sec" id="delset" style="margin-top:10px">Eliminar esta tabla</button>
+<div class="grid" style="margin-top:14px">
+<div><label for="ns">Noche desde (hora)</label><input type="number" id="ns" min="0" max="23"></div>
+<div><label for="ne">Noche hasta (hora)</label><input type="number" id="ne" min="0" max="23"></div>
+</div>
+<p class="note">Cada guardia usa la tabla vigente en su fecha, así que al actualizar los valores los períodos anteriores no cambian. Para una actualización, creá una tabla nueva desde la fecha en que empieza a regir y editá sus valores. El tipo de día (semana, fin de semana o feriado) se toma de la fecha de inicio. Los datos se guardan solo en este dispositivo.</p>
+</details>
+<details class="box" id="profd"><summary>👩🏽‍⚕️ Mi perfil y días fijos</summary>
+<div style="margin-top:10px"><label for="pname">Tu nombre</label><input id="pname" type="text" maxlength="40" autocomplete="given-name"></div>
+<div id="pbody"><div id="pform"><p class="note">Agregá tus días fijos: elegí el día, qué semanas del mes (todas, o por ejemplo solo el 2.º y el 5.º) y el horario. Si tenés más de uno, tocá "Agregar día fijo". Se cargan solos desde el período que elijas más abajo y en todos los siguientes. Después podés editar cada guardia: licencia, reemplazo, cedida o feriado (los feriados se marcan a mano).</p>
+<div id="pdays"></div>
+<button class="sec" id="padd" type="button" style="margin-top:10px">+ Agregar día fijo</button>
+<div id="sincew" style="margin-top:10px"><label for="psince">Cargar mis días fijos desde el período</label><select id="psince"></select><p class="note" style="margin-top:6px">Elegí desde qué período querés que se carguen. Podés elegir uno anterior si querés cargar también lo que ya pasó.</p></div>
+<button class="add" id="psave" style="margin-top:12px">Guardar días fijos</button>
+<button class="sec" id="pback" style="margin-top:8px" hidden>Elegir otra opción</button>
+<p class="note" id="pmsg" role="status"></p></div></div>
+</details>
+<details class="box"><summary>🔍 Detalle por tipo de hora</summary><div id="detb" style="margin-top:8px"></div></details>
+<section class="box ban" id="bkban" hidden><span id="bkt"></span><button class="sec" id="bkgo">Hacer copia ahora</button></section>
+<details class="box" id="bkd"><summary>👮 Guardar mis guardias en Excel</summary>
+<div class="nota" style="margin-top:10px">📝 <b>Nota:</b> los datos de la app se guardan solo en este celular. Si cambiás de teléfono o lo perdés, se pierden. Por eso te recomiendo guardar de vez en cuando una copia en Excel con todas tus guardias.<br>⚠️ Usá siempre la app desde el ícono de la pantalla de inicio, no desde internet (Safari o Chrome): si la abrís desde el navegador, podés perder los datos.</div>
+<div class="grid" style="margin-top:12px"><button class="add" id="bkdl" style="margin-top:0">Descargar todo (.csv)</button><button class="sec" id="bkcp">Copiar todo para Excel</button></div>
+<textarea id="bkxt" hidden aria-label="Detalle para copiar" style="margin-top:10px"></textarea>
+<p class="note" id="bkmsg" role="status"></p></details>
+</div>
+<p class="foot">Herramienta extraoficial (by valen 🧚🏼‍♀️), no es del hospital. Es una estimación aproximada: el monto real lo define tu recibo. Tus datos quedan solo en este celular.</p>
+</main>
+<script>
+const DEF={sem_d:27422.74,sem_n:30907.38,fin_d:35965.24,fin_n:37502.21,fer_d:37745.59,fer_n:37745.59};
+const LBL={sem_d:"Lun a vie, día",sem_n:"Lun a vie, noche",fin_d:"Sáb y dom, día",fin_n:"Sáb y dom, noche",fer_d:"Feriado, día",fer_n:"Feriado, noche"};
+const MES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const DOW=["dom","lun","mar","mié","jue","vie","sáb"];
+const BASE="2000-01-01";
+function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+let S=load("g_set",{});
+if(!S.sets)S={ns:S.ns,ne:S.ne,sets:[{from:BASE,desc:S.desc!=null?S.desc:18.3,rates:{...DEF,...(S.rates||{})}}]};
+if(S.ns==null)S.ns=20;if(S.ne==null)S.ne=8;
+let E=load("g_ent",[]);
+let C=load("g_cob",{}),NET=0,editId=null,ovKey="";
+let P=load("g_prof",null);
+if(P&&P.name&&!P.mode){P.mode=(P.rules&&P.rules.length)?"fixed":"manual";P.done=true;save("g_prof",P)}
+const $=s=>document.querySelector(s);
+const money=n=>n.toLocaleString("es-AR",{style:"currency",currency:"ARS"});
+const pad=n=>String(n).padStart(2,"0");
+const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const parse=s=>new Date(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10));
+const toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m};
+const fromMin=n=>pad(Math.floor(n/60)%24)+":"+pad(n%60);
+const dur=(s,e)=>((((toMin(e)-toMin(s))%1440)+1440)%1440)||1440;
+E.forEach(e=>{if(!e.end)e.end=fromMin(toMin(e.start)+Math.round(e.hours*60))});
+function per(d){const y=d.getFullYear(),m=d.getMonth();return d.getDate()>=16?new Date(y,m,16):new Date(y,m-1,16)}
+const perKey=s=>iso(per(parse(s)));
+let cur=iso(per(new Date()));
+function pLabel(k){const s=parse(k),y=s.getFullYear(),m=s.getMonth();const e=new Date(y,m+1,15),p=new Date(y,m+2,1);
+ return s.getDate()+" "+MES[m].slice(0,3)+" – "+e.getDate()+" "+MES[e.getMonth()].slice(0,3)+" "+e.getFullYear()+" · se cobra en "+MES[p.getMonth()]}
+function periods(){const s=new Set([cur]),p=per(new Date());for(let i=-12;i<=12;i++)s.add(iso(new Date(p.getFullYear(),p.getMonth()+i,16)));E.forEach(e=>s.add(perKey(e.date)));return [...s].sort().reverse()}
+function setFor(date){let r=S.sets[0];for(const s of S.sets)if(s.from<=date)r=s;return r}
+function calc(e){const dow=parse(e.date).getDay();const t=e.hol?"fer":(dow==0||dow==6?"fin":"sem");
+ const st=setFor(e.date),h0=toMin(e.start);let dm=0,nm=0;const tot=Math.round(e.hours*60);
+ for(let i=0;i<tot;i++){const h=Math.floor(((h0+i)%1440)/60);
+  const n=S.ns>S.ne?(h>=S.ns||h<S.ne):(h>=S.ns&&h<S.ne);n?nm++:dm++}
+ const g=dm/60*st.rates[t+"_d"]+nm/60*st.rates[t+"_n"];return{d:dm/60,n:nm/60,g,t,dto:g*st.desc/100,pc:st.desc,r:st.rates}}
+const TN={sem:"semana",fin:"fin de semana",fer:"feriado"};
+const fh=n=>(Math.round(n*100)/100).toString().replace(".",",");
+const fpc=n=>(Math.round(n*100)/100).toString().replace(".",",");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const endTs=e=>parse(e.date).getTime()+(toMin(e.start)+Math.round(e.hours*60))*60000;
+const colCls=e=>e.kind=="ced"?"c-ced":e.kind=="rep"?"c-rep":e.hol?"c-fer":"c-own";
+const isPlan=e=>(!!e.plan||!!e.auto)&&endTs(e)>Date.now();
+function settlePlans(){let c=false;const n=Date.now();E.forEach(e=>{if(e.plan&&endTs(e)<=n){e.plan=false;c=true}});if(c)save("g_ent",E)}
+function defSince(){return iso(per(new Date()))}
+function autogen(){
+ if(!P||!P.done||!P.rules||!P.rules.length)return;
+ const p0=per(new Date()),since=P.since||defSince();
+ let end=new Date(p0.getFullYear(),p0.getMonth()+2,15);const pc=parse(cur),ce=new Date(pc.getFullYear(),pc.getMonth()+1,15);if(ce>end)end=ce;
+ const ov=(x,y)=>{const p=rg(x),q=rg(y);return p[0]<q[1]&&q[0]<p[1]};
+ const man=E.filter(e=>!e.auto);let n=0;
+ const keep=E.filter(e=>!(e.auto&&!e.mod&&man.some(m=>ov(m,e))));if(keep.length!=E.length){E=keep;n++}
+ const have=new Set(E.map(e=>e.date+"|"+e.start)),sk=new Set(P.skip||[]);
+ for(let d=parse(since);d<=end;d=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1)){
+  const dn=d.getDate(),dm=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+  for(const r of P.rules){if(r.d!=d.getDay())continue;
+   const w=r.w||[];if(w.length&&!(w.includes(Math.ceil(dn/7))||(w.includes(6)&&dn+7>dm)))continue;
+   const k=iso(d)+"|"+r.s;if(have.has(k)||sk.has(k))continue;
+   const cand={date:iso(d),start:r.s,hours:dur(r.s,r.e)/60};if(E.some(m=>ov(m,cand)))continue;
+   E.push({id:Date.now()*1000+(n++),date:iso(d),start:r.s,end:r.e,hours:dur(r.s,r.e)/60,hol:false,lic:false,plan:false,kind:"own",who:"",auto:true});have.add(k)}}
+ if(n)save("g_ent",E)}
+const PD=[[1,"lunes"],[2,"martes"],[3,"miércoles"],[4,"jueves"],[5,"viernes"],[6,"sábado"],[0,"domingo"]];
+function stage(){if(!P||!P.name)return 1;if(!P.mode)return 2;if(P.mode=="fixed"&&!P.done)return 3;return 4}
+let welcomed=false,introDone=false,showIntro=false,splashDone=false;
+const WK=[[1,"1.º"],[2,"2.º"],[3,"3.º"],[4,"4.º"],[5,"5.º"],[6,"Último"]];
+function wTxt(r){const w=(r.w||[]).slice().sort((x,y)=>x-y).map(n=>n==6?"último":n+".º");
+ if(!w.length)return"todas las semanas";const t=w.length>1?w.slice(0,-1).join(", ")+" y "+w[w.length-1]:w[0];return t+" del mes"}
+function welcomeTxt(){const m=P.mode,r=P.rules||[];
+ if(m=="fixed"&&r.length)return"Tus días fijos: "+r.slice().sort((a,b)=>((a.d+6)%7)-((b.d+6)%7)||a.s.localeCompare(b.s)).map(x=>(PD.find(q=>q[0]==x.d)||[0,""])[1]+" "+x.s+"–"+x.e+" ("+wTxt(x)+")").join("; ")+".";
+ if(m=="resident")return"Residente: cargás tus guardias a mano.";
+ return"Cargás tus guardias a mano."}
+function showStage(){let s=stage();
+ if(s<4)welcomed=true;
+ const w0=s==4&&!welcomed,w=w0||showIntro;
+ $("#ob0").hidden=!w0||showIntro;if(w0&&!showIntro){$("#w0t").textContent="¡Hola de nuevo, "+P.name+"!";$("#w0s").textContent=welcomeTxt()}
+ const sp=s==1&&!splashDone,it=(s==1&&!introDone&&!sp)||(s==4&&showIntro);$("#ob000").hidden=!sp;$("#ob00").hidden=!it;$("#w00go").textContent=s==4?"Entendido, volver":"Empezar";
+ $("#ob1").hidden=s!=1||it||sp;$("#ob2").hidden=s!=2;$("#ob3").hidden=s!=3;$("#app").hidden=s!=4||w;
+ if(s==3)$("#ob3").append($("#pform"));else $("#pbody").append($("#pform"));
+ $("#pback").hidden=s!=3;
+ $("#hello").textContent=P&&P.name&&!w?"Hola, "+P.name+".":""}
+let RL=[];
+function fillSince(){const cu=defSince(),sel=P&&P.since?perKey(P.since):cu;
+ const ks=periods().filter(k=>k<=cu);if(!ks.includes(sel))ks.push(sel);ks.sort().reverse();
+ $("#psince").innerHTML=ks.map(k=>`<option value="${k}"${k==sel?" selected":""}>${pLabel(k)}</option>`).join("")}
+function syncRL(){document.querySelectorAll("#pdays .rl").forEach((c,i)=>{if(!RL[i])return;RL[i].d=+c.querySelector(".rd").value;RL[i].s=c.querySelector(".rs").value;RL[i].e=c.querySelector(".re").value})}
+function renderRules(){
+ $("#pdays").innerHTML=RL.length?RL.map((r,i)=>{const all=!(r.w&&r.w.length);return`<div class="rl" data-i="${i}"><div class="rl1"><select class="rd" aria-label="Día de la semana">${PD.map(([n,nm])=>`<option value="${n}"${n==r.d?" selected":""}>${nm}</option>`).join("")}</select><button type="button" class="x rx" aria-label="Quitar este día fijo">✕</button></div><div class="rw" role="group" aria-label="Qué semanas del mes"><button type="button" class="wk${all?" on":""}" data-w="0" aria-pressed="${all}">Todas</button>${WK.map(([n,l])=>{const on=(r.w||[]).includes(n);return`<button type="button" class="wk${on?" on":""}" data-w="${n}" aria-pressed="${on}">${l}</button>`}).join("")}</div><div class="rt"><label>Inicio<input type="time" class="rs" value="${r.s}"></label><label>Fin<input type="time" class="re" value="${r.e}"></label></div></div>`}).join(""):`<p class="note">Todavía no agregaste días fijos.</p>`}
+$("#pdays").onclick=e=>{const c=e.target.closest(".rl");if(!c)return;syncRL();const i=+c.dataset.i,r=RL[i];
+ if(e.target.closest(".rx")){RL.splice(i,1);renderRules();return}
+ const b=e.target.closest(".wk");if(b){const n=+b.dataset.w;let w=r.w||[];if(n==0)w=[];else w=w.includes(n)?w.filter(x=>x!=n):w.concat(n).sort((x,y)=>x-y);r.w=w;renderRules()}};
+$("#padd").onclick=()=>{syncRL();RL.push({d:1,s:"08:00",e:"20:00",w:[]});renderRules()};
+function buildProf(){
+ RL=((P&&P.rules)||[]).map(r=>({d:r.d,s:r.s,e:r.e,w:(r.w||[]).slice()}));
+ if(!RL.length&&P&&P.mode=="fixed"&&!P.done)RL.push({d:1,s:"08:00",e:"20:00",w:[]});
+ renderRules();
+ const p=P||{};$("#pname").value=p.name||"";$("#obname").value=p.name||"";
+ fillSince();
+ showStage()}
+function setP(o){P={name:"",rules:[],skip:[],since:"",...(P||{}),...o};save("g_prof",P);buildProf();render()}
+$("#w0how").onclick=()=>{showIntro=true;showStage();window.scrollTo(0,0)};
+$("#why").onclick=()=>{const p=$("#whyp"),o=p.hidden;p.hidden=!o;$("#why").setAttribute("aria-expanded",o);$("#why").textContent=o?"✕ Cerrar":"ⓘ ¿Qué se descuenta?"};
+$("#w000go").onclick=()=>{splashDone=true;showStage();window.scrollTo(0,0)};
+$("#w00go").onclick=()=>{showIntro=false;introDone=true;showStage();window.scrollTo(0,0)};
+$("#obback").onclick=()=>{introDone=false;showStage();window.scrollTo(0,0)};
+$("#home").onclick=()=>{welcomed=false;showStage();window.scrollTo(0,0)};
+$("#w0go").onclick=()=>{welcomed=true;showStage();window.scrollTo(0,0)};
+$("#w0ch").onclick=()=>{welcomed=true;showStage();const d=$("#profd");d.open=true;d.scrollIntoView({behavior:"smooth",block:"start"})};
+$("#obnext").onclick=()=>{const n=$("#obname").value.trim();if(!n){$("#obmsg").textContent="Escribí tu nombre para continuar.";return}$("#obmsg").textContent="";setP({name:n})};
+$("#obname").onkeydown=e=>{if(e.key=="Enter")$("#obnext").click()};
+
+$("#opt1").onclick=()=>setP({mode:"fixed",done:false});
+$("#opt2").onclick=()=>setP({mode:"manual",done:true});
+$("#opt3").onclick=()=>setP({mode:"resident",done:true});
+$("#pback").onclick=()=>{const q={...P};delete q.mode;q.done=false;P=q;save("g_prof",P);buildProf();render()};
+$("#psave").onclick=()=>{
+ const onb=stage()==3,name=$("#pname").value.trim()||P.name,since=$("#psince").value;
+ syncRL();const rules=RL.map(r=>({d:r.d,s:r.s,e:r.e,...(r.w&&r.w.length?{w:r.w.slice()}:{})}));
+ if(rules.some(r=>!r.s||!r.e)){$("#pmsg").textContent="Completá la hora de inicio y de fin de cada día fijo.";return}
+ if(onb&&!rules.length){$("#pmsg").textContent="Agregá al menos un día fijo o elegí otra opción.";return}
+ if(rules.length&&!since){$("#pmsg").textContent="Elegí desde qué fecha cargar tus días fijos.";return}
+ const now=Date.now();
+ E=E.filter(e=>!(e.auto&&!e.mod&&endTs(e)>now));
+ P={...P,name,since:since||defSince(),rules,mode:rules.length?"fixed":P.mode,done:true};
+ save("g_prof",P);autogen();save("g_ent",E);buildProf();render();
+ $("#pmsg").textContent=rules.length?"Listo: cargué tus días fijos en todos los períodos.":"Perfil guardado."};
+function render(){
+ settlePlans();autogen();
+ $("#per").innerHTML=periods().map(k=>`<option value="${k}"${k==cur?" selected":""}>${pLabel(k)}</option>`).join("");
+ const list=E.filter(e=>perKey(e.date)==cur).sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start));
+ let H=0,G=0,D=0,PC=0,PN=0;const pcs=new Set(),B={};
+ $("#lista").innerHTML=list.length?list.map(e=>{const c=calc(e),ce=e.kind=="ced";if(!ce){H+=e.hours;G+=c.g;D+=c.dto;pcs.add(c.pc);if(isPlan(e)){PC++;PN+=c.g-c.dto}[["d",c.d],["n",c.n]].forEach(([k,h])=>{const q=c.t+"_"+k,b=B[q]=B[q]||{h:0,g:0};b.h+=h;b.g+=h*c.r[q]})}const d=parse(e.date);
+  return `<div class="row k ${colCls(e)}${isPlan(e)?" plan":""}" data-rid="${e.id}"><div><b>${DOW[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}</b> · ${e.start}–${e.end} · ${fh(e.hours)} hs${e.lic?'<span class="tag">licencia</span>':''}${e.auto?'<span class="tag fx">fija</span>':''}${isPlan(e)?'<span class="tag pl">planificada</span>':''}${e.kind=="rep"?'<span class="tag re">reemplazo</span>':''}${ce?'<span class="tag ce">cedida</span>':''}${overl(e)?'<span class="tag ov">superpuesta</span>':''}</div>
+  <div class="m">${ce?`no se cobra · se la diste${e.who?" a "+esc(e.who):""}`:`${TN[c.t]} · ${fh(c.d)} hs día, ${fh(c.n)} hs noche · ${money(c.g)}${e.kind=="rep"&&e.who?" · cubriste a "+esc(e.who):""}`}</div>
+  <div class="acts">${e.plan?`<button class="x" data-ok="${e.id}" aria-label="Marcar como hecha">✓</button>`:""}<button class="x" data-ed="${e.id}" aria-label="Editar guardia">✎</button><button class="x" data-id="${e.id}" aria-label="Eliminar guardia">✕</button></div></div>`}).join("")
+  :`<p class="empty">Todavía no cargaste guardias en este período. Agregá la primera arriba.</p>`;
+ $("#gdt").textContent="📋 Guardias cargadas del período ("+list.length+")";$("#neto").textContent=money(G-D);$("#hs").textContent=fh(H)+" hs totales trabajadas";
+ $("#bruto").textContent=money(G);$("#dto").textContent=money(D);
+ $("#dtol").textContent="Descuento"+(pcs.size==1?" ("+fpc([...pcs][0])+" %)":"");
+ NET=G-D;const cv=C[cur];$("#cob").value=cv!=null?cv:"";difUpd();renderExtra(list,B,PC,PN);bkBan();valBan();
+}
+let sel=S.sets.length-1,armed=false;
+function renderSet(){S.sets.sort((a,b)=>a.from.localeCompare(b.from));if(sel>=S.sets.length)sel=S.sets.length-1;
+ $("#setsel").innerHTML=S.sets.map((s,i)=>{const lb=s.from==BASE?"Octubre 2026 (valores iniciales)":"Desde "+parse(s.from).getDate()+" "+MES[parse(s.from).getMonth()]+" "+parse(s.from).getFullYear();return `<option value="${i}"${i==sel?" selected":""}>${lb}</option>`}).join("");
+ const st=S.sets[sel];Object.keys(LBL).forEach(k=>$("#r_"+k).value=st.rates[k]);$("#desc").value=st.desc;
+ $("#delset").textContent="Eliminar esta tabla";armed=false;$("#delset").disabled=S.sets.length<2}
+$("#rates").innerHTML=Object.keys(LBL).map(k=>`<div><label for="r_${k}">${LBL[k]}</label><input id="r_${k}" type="number" step="0.01" inputmode="decimal"></div>`).join("");
+Object.keys(LBL).forEach(k=>$("#r_"+k).onchange=e=>{const v=parseFloat(e.target.value);if(v>=0){S.sets[sel].rates[k]=v;save("g_set",S);render()}});
+$("#desc").onchange=e=>{const v=parseFloat(e.target.value);if(v>=0){S.sets[sel].desc=v;save("g_set",S);render()}};
+$("#setsel").onchange=e=>{sel=+e.target.value;renderSet()};
+$("#newset").onclick=()=>{const d=$("#nsd").value;if(!d||S.sets.some(s=>s.from==d))return;
+ const c=S.sets[sel];S.sets.push({from:d,desc:c.desc,rates:{...c.rates}});S.sets.sort((a,b)=>a.from.localeCompare(b.from));sel=S.sets.findIndex(s=>s.from==d);save("g_set",S);renderSet();render()};
+$("#delset").onclick=()=>{if(!armed){armed=true;$("#delset").textContent="Tocá otra vez para eliminar";return}
+ S.sets.splice(sel,1);sel=Math.max(0,sel-1);save("g_set",S);renderSet();render()};
+[["ns"],["ne"]].forEach(([k])=>{$("#"+k).value=S[k];$("#"+k).onchange=e=>{const v=parseInt(e.target.value,10);if(v>=0&&v<=23){S[k]=v;save("g_set",S);render()}}});
+$("#per").onchange=e=>{cur=e.target.value;render()};
+$("#lista").onclick=e=>{const b=e.target.closest(".x");if(!b)return;
+ if(b.dataset.ok){const x=E.find(z=>z.id==b.dataset.ok);if(x){x.plan=false;save("g_ent",E);render()}return}
+ if(b.dataset.ed){const x=E.find(z=>z.id==b.dataset.ed);if(!x)return;editId=x.id;$("#f").value=x.date;$("#i").value=x.start;$("#o").value=x.end;$("#fer").checked=!!x.hol;$("#lic").checked=!!x.lic;$("#plan").checked=!!x.plan;$("#kind").value=x.kind||"own";$("#who").value=x.who||"";kindUi();$("#add").textContent="Guardar cambios";$("#cancel").style.display="block";showDur();$("#gd").open=true;$("#f").scrollIntoView({behavior:"smooth",block:"center"});return}
+ const rm=E.find(x=>x.id==b.dataset.id);if(rm&&rm.auto&&P){P.skip=(P.skip||[]).concat(rm.date+"|"+rm.start);save("g_prof",P)}
+ E=E.filter(x=>x.id!=b.dataset.id);if(editId==b.dataset.id)endEdit();save("g_ent",E);render()};
+function showDur(){const i=$("#i").value,o=$("#o").value;$("#dur").textContent=i&&o?"Duración: "+fh(dur(i,o)/60)+" hs"+(toMin(o)<=toMin(i)?" (termina al día siguiente)":""):""}
+$("#i").oninput=showDur;$("#o").oninput=showDur;
+function kindUi(){const k=$("#kind").value;$("#whow").hidden=k=="own";$("#wholbl").textContent=k=="rep"?"¿A quién cubrís? (opcional)":"¿A quién se la diste? (opcional)"}
+$("#kind").onchange=kindUi;
+function bkBan(){const t=load("g_bk",0),days=t?(Date.now()-t)/864e5:0;const show=E.length>0&&(!t||days>=14);$("#bkban").hidden=!show;if(show)$("#bkt").textContent=t?"Hace "+Math.floor(days)+" días que no hacés una copia para Excel.":"Hacé una copia para Excel: todavía no guardaste ninguna y tus guardias están solo en este celular."}
+$("#bkgo").onclick=()=>{$("#bkd").open=true;$("#bkd").scrollIntoView({behavior:"smooth",block:"start"});$("#bkdl").focus()};
+function valBan(){$("#valban").hidden=!(P&&P.name&&P.mode&&(P.mode!="fixed"||P.done)&&!P.vals)}
+$("#valgo").onclick=()=>{$("#setd").open=true;$("#setd").scrollIntoView({behavior:"smooth",block:"start"})};
+$("#valok").onclick=$("#valx").onclick=()=>{P.vals=true;save("g_prof",P);valBan()};
+function hl(id,ns){const r=document.querySelector('[data-rid="'+id+'"]');if(!r)return;r.classList.add("hl");if(!ns)r.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>r.classList.remove("hl"),2500)}
+$("#add").onclick=()=>{const date=$("#f").value,start=$("#i").value,end=$("#o").value;
+ if(!date||!start||!end){$("#msg").textContent="Completá fecha, hora de inicio y hora de fin.";return}
+ $("#msg").textContent="";
+ const nu={date,start,end,hours:dur(start,end)/60,hol:$("#fer").checked,lic:$("#lic").checked,plan:$("#plan").checked,kind:$("#kind").value,who:$("#kind").value=="own"?"":$("#who").value.trim()};
+ const dup=E.find(x=>x.id!=editId&&x.date==date&&x.start==start&&x.end==end);
+ if(dup){const dd=parse(dup.date);cur=perKey(dup.date);render();hl(dup.id,true);$("#msg").textContent="⚠️ Error: esa guardia ya está cargada ("+dd.getDate()+"/"+(dd.getMonth()+1)+", "+dup.start+"–"+dup.end+"). La resalté en la lista. No se puede cargar dos veces; si querés cambiarla, tocá ✎ en la guardia.";ovKey="";return}
+ const ov=overl({...nu,id:editId!=null?editId:-1});
+ if(ov&&ovKey!==JSON.stringify(nu)){const od=parse(ov.date);cur=perKey(ov.date);render();hl(ov.id,true);$("#msg").textContent="Ya tenés cargada una guardia que se superpone: la del "+od.getDate()+"/"+(od.getMonth()+1)+" ("+ov.start+"–"+ov.end+"), resaltada en la lista. Si querés cargarla igual, tocá de nuevo.";ovKey=JSON.stringify(nu);return}
+ ovKey="";
+ const nid=editId!=null?editId:Date.now();
+ if(editId!=null){const x=E.find(z=>z.id==editId);if(x){if(x.auto&&P&&(x.date!=nu.date||x.start!=nu.start)){P.skip=(P.skip||[]).concat(x.date+"|"+x.start);save("g_prof",P);x.auto=false}Object.assign(x,nu);if(x.auto)x.mod=true}}else E.push({id:nid,...nu});
+ save("g_ent",E);
+ cur=perKey(date);$("#fer").checked=false;$("#lic").checked=false;$("#plan").checked=false;$("#kind").value="own";$("#who").value="";kindUi();endEdit();render();hl(nid)};
+function endEdit(){editId=null;$("#add").textContent="Agregar guardia";$("#cancel").style.display="none"}
+$("#cancel").onclick=()=>{endEdit();$("#fer").checked=false;$("#lic").checked=false;$("#plan").checked=false;$("#kind").value="own";$("#who").value="";kindUi()};
+$("#f").value=iso(new Date());
+$("#f").onchange=()=>{const v=$("#f").value;if(v){cur=perKey(v);render()}};
+document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{const [s,o]=b.dataset.s.split(",");$("#i").value=s;$("#o").value=o;showDur()});
+function difUpd(){const cv=C[cur];const d=cv!=null?cv-NET:0;$("#dif").textContent=cv==null?"":(Math.abs(d)<1?"Coincide con lo calculado.":"Cobraste "+money(Math.abs(d))+(d>0?" más":" menos")+" de lo calculado.")}
+$("#cob").onchange=e=>{const v=parseFloat(e.target.value);if(e.target.value==="")delete C[cur];else if(v>=0)C[cur]=v;save("g_cob",C);difUpd()};
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
+const rg=e=>{const a=Math.round(parse(e.date).getTime()/60000)+toMin(e.start);return[a,a+Math.round(e.hours*60)]};
+function overl(e){if(e.kind=="ced")return;const[a,b]=rg(e);return E.find(x=>x.id!=e.id&&x.kind!="ced"&&(r=>r[0]<b&&a<r[1])(rg(x)))}
+function renderExtra(list,B,PC,PN){
+ $("#pln").textContent=PC?"Incluye "+PC+(PC==1?" guardia planificada":" guardias planificadas")+" por "+money(PN)+" netos.":"";
+ const ks=Object.keys(LBL).filter(k=>B[k]&&B[k].h>0);
+ $("#detb").innerHTML=ks.length?ks.map(k=>`<div class="row"><div>${LBL[k]}</div><div style="text-align:right">${fh(B[k].h)} hs · ${money(B[k].g)}</div></div>`).join(""):`<p class="empty">Sin horas cargadas en este período.</p>`;
+ const s=parse(cur),en=new Date(s.getFullYear(),s.getMonth()+1,15);
+ let h=["lu","ma","mi","ju","vi","sá","do"].map(x=>`<div class="ch">${x}</div>`).join("")+"<div></div>".repeat((s.getDay()+6)%7);
+ for(let d=new Date(s);d<=en;d=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1)){const k=iso(d),es=list.filter(x=>x.date==k);
+  h+=`<button class="cd" data-d="${k}" aria-label="${d.getDate()} de ${MES[d.getMonth()]}"><span>${d.getDate()}</span>${es.map(x=>`<i class="${colCls(x)}${isPlan(x)?" pl":""}">${x.start.slice(0,2)}–${x.end.slice(0,2)}</i>`).join("")}</button>`}
+ $("#cal").innerHTML=h}
+$("#cal").onclick=e=>{const b=e.target.closest(".cd");if(!b)return;$("#f").value=b.dataset.d;$("#gd").open=true;$("#f").scrollIntoView({behavior:"smooth",block:"center"})};
+function xlBlock(k){
+ const li=E.filter(e=>perKey(e.date)==k).sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start));
+ const m=v=>v.toFixed(2).replace(".",","),DS=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+ let G=0,D=0,H=0,HD=0,HN=0;
+ const body=li.map(e=>{const c=calc(e),ce=e.kind=="ced",d=parse(e.date);
+  const tipo=ce?"Cedida (no se cobra)":e.kind=="rep"?"Reemplazo":e.lic?"Licencia":isPlan(e)?"Planificada":"Propia";
+  const g=ce?0:c.g,dt=ce?0:c.dto;
+  if(!ce){G+=c.g;D+=c.dto;H+=e.hours;HD+=c.d;HN+=c.n}
+  return[d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear(),DS[d.getDay()],e.start,e.end,fh(e.hours),fh(c.d),fh(c.n),TN[c.t],e.hol?"Sí":"No",tipo,(e.who||"").replace(/\s+/g," "),m(c.r[c.t+"_d"]),m(c.r[c.t+"_n"]),m(g),m(dt),m(g-dt)]});
+ const e0=Array(16).fill("");const row=(i,v)=>{const r=e0.slice();for(const k in i)r[k]=i[k];return r};
+ return[["Guardias – "+pLabel(k)],[],
+  ["Fecha","Día","Inicio","Fin","Horas","Hs día","Hs noche","Tipo de día","Feriado","Tipo de guardia","Con quién","Valor hora día","Valor hora noche","Bruto","Descuento","Neto"],
+  ...body,[],
+  row({3:"TOTALES",4:fh(H),5:fh(HD),6:fh(HN),13:m(G),14:m(D),15:m(G-D)})]}
+const xlTxt=r=>r.map(x=>x.join("\t")).join("\n");
+const xlCsv=r=>"﻿"+r.map(x=>x.map(v=>/[;"\n]/.test(v)?'"'+String(v).replace(/"/g,'""')+'"':v).join(";")).join("\r\n");
+function xlRows(keys){const out=[];keys.forEach((k,i)=>{if(i)out.push([],[]);out.push(...xlBlock(k))});return out}
+const allKeys=()=>[...new Set(E.map(e=>perKey(e.date)))].sort();
+async function saveFile(nm,text,mime,title){
+ try{const f=new File([text],nm,{type:mime});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title});return"share"}}
+ catch(e){if(e&&e.name=="AbortError")return"cancel"}
+ try{const u=URL.createObjectURL(new Blob([text],{type:mime})),a=document.createElement("a");a.href=u;a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return"dl"}catch(e){}
+ return""}
+const fileMsg=(r,nm)=>r=="share"?"Listo: elegí dónde guardarlo (Archivos, Mail, WhatsApp…). Después abrilo con Excel.":r=="dl"?"Archivo "+nm+" descargado. Abrilo con Excel.":r=="cancel"?"No se guardó el archivo.":"No se pudo guardar el archivo. Probá con Copiar para Excel.";
+async function copyShow(t,ta,msg,okTxt){let ok=false;try{await navigator.clipboard.writeText(t);ok=true}catch(e){}
+ ta.value=t;ta.hidden=ok;if(!ok)ta.select();msg.textContent=ok?okTxt:"No se pudo copiar solo. Seleccioná el texto de arriba, copialo y pegalo en Excel.";return ok}
+$("#bkdl").onclick=async()=>{const ks=allKeys();if(!ks.length){$("#bkmsg").textContent="Todavía no cargaste guardias.";return}
+ const nm="GUARDIAMOS-todas-mis-guardias-"+iso(new Date())+".csv";
+ const r=await saveFile(nm,xlCsv(xlRows(ks)),"text/csv;charset=utf-8","GUARDIAMOS - todas mis guardias");
+ if(r&&r!="cancel"){save("g_bk",Date.now());bkBan()}$("#bkmsg").textContent=fileMsg(r,nm)};
+$("#bkcp").onclick=async()=>{const ks=allKeys();if(!ks.length){$("#bkmsg").textContent="Todavía no cargaste guardias.";return}
+ const ok=await copyShow(xlTxt(xlRows(ks)),$("#bkxt"),$("#bkmsg"),"Copiado. Pegalo en una planilla de Excel o en Notas para guardarlo.");if(ok){save("g_bk",Date.now());bkBan()}};
+buildProf();autogen();showDur();renderSet();render();
+try{if("serviceWorker" in navigator&&location.protocol.startsWith("http"))addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})})}catch(e){}
+</script></body></html>
